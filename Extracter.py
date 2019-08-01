@@ -27,7 +27,6 @@ class Extracter:
         """Runs the extracter
 
         """
-
         # Get zip file from source
         zip_file = urlopen(self.download_url)
 
@@ -53,10 +52,9 @@ class Extracter:
         """Makes a temporary zip.
 
         Parameters:
-        contents : The contents to put into the temporary zip file
+        contents : The contents to put into the temporary zip file.
 
         """
-
         # Make the temporary directory
         os.makedirs(self.tmp_dir, exist_ok=True)
         tmp_file = os.path.join(self.tmp_dir, self.tmp_file_name)
@@ -66,10 +64,9 @@ class Extracter:
             tmp.write(contents.read())
 
     def remove_tmp(self):
-        """Removes the temporary directory, if it exists
+        """Removes the temporary directory, if it exists.
 
         """
-
         rmtree(self.tmp_dir)
 
 

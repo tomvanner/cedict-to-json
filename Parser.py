@@ -30,7 +30,7 @@ class Parser:
         self.entries[entry['simplified']] = entry
 
     def parse(self):
-        """Reads the cedict and processes its contents, formatting and stroing each entry
+        """Reads the cedict and processes its contents, formatting and storing each entry
 
         Returns:
         entries: A dictonary containing all of the cedict entires.
