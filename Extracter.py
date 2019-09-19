@@ -8,6 +8,10 @@ class Extracter:
 
     Attributes:
     download_url (string): The url containing the source zip file
+    extract_dir (string): The directory to extract the file contents to
+    file_names (list): A list containing names of all the files extracted
+    tmp_dir (string): The directory where the downloaded zip file will be stored
+    tmp_file_name (string): The name of the temporary zip file
 
     """
     def __init__(self, download_url, extract_dir='data'):
