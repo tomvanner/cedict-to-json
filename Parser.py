@@ -27,7 +27,12 @@ class Parser:
             Pinyin character(s)
             Entry definition
         """
-        self.entries[entry['simplified']] = entry
+        token = entry['simplified']
+        # Some words have multiple meanings or pronounciations, so an entry is a list
+        if token in self.entries:
+            self.entries[token].append( entry )
+        else:
+            self.entries[token] = [entry]
 
     def parse(self):
         """Reads the cedict and processes its contents, formatting and storing each entry
@@ -44,9 +49,9 @@ class Parser:
 
                 entry = self.process_line(line)
                 self.add_entry(entry)
-                
+
         return self.entries
-    
+
     def process_line(self, line):
         """Processes the cedict line by line
 
@@ -55,7 +60,7 @@ class Parser:
         """
         # Lines should be in format: Traditional Simplified [pin1 yin1] /English equivalent 1/equivalent 2/
         # E.g. 中國 中国 [Zhong1 guo2] /China/Middle Kingdom/
-        filtered_line = line.strip().strip('\t').strip('\n').strip('\r')    
+        filtered_line = line.strip().strip('\t').strip('\n').strip('\r')
         elements = re.split(r'(.+) (.+) \[(.+)\] /(.*)/', filtered_line)
         elements = list(filter(None, elements))
 
